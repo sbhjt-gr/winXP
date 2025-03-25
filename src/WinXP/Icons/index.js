@@ -54,13 +54,14 @@ function Icon({
   id,
   component,
   measure,
+  ...rest
 }) {
   const ref = useRef(null);
   function _onMouseDown() {
     onMouseDown(id);
   }
   function _onDoubleClick() {
-    onDoubleClick(component);
+    onDoubleClick(component, { id, title, icon, component, ...rest });
   }
   useEffect(() => {
     const target = ref.current;

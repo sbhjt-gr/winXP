@@ -215,7 +215,12 @@ function WinXP() {
   function onMouseDownIcon(id) {
     dispatch({ type: FOCUS_ICON, payload: id });
   }
-  function onDoubleClickIcon(component) {
+  function onDoubleClickIcon(component, icon) {
+    if (icon?.isExternalLink) {
+      window.open(icon.url, '_blank');
+      return;
+    }
+
     if (component === null) {
       dispatch({
         type: ADD_APP,

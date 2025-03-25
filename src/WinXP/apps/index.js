@@ -17,6 +17,8 @@ import winamp from 'assets/windowsIcons/winamp.png';
 import paintLarge from 'assets/windowsIcons/680(32x32).png';
 import paint from 'assets/windowsIcons/680(16x16).png';
 import recycleBin from 'assets/windowsIcons/recycling_bin.webp';
+import myedenfocus from 'components/Google/myedenfocus.png';
+import ragionare from 'components/Google/ragionare.png';
 
 const gen = () => {
   let id = -1;
@@ -118,6 +120,24 @@ export const defaultIconState = [
     icon: paintLarge,
     title: 'Paint',
     component: Paint,
+    isFocus: false,
+  },
+  {
+    id: 7,
+    icon: myedenfocus,
+    title: 'MyedenFocus',
+    isExternalLink: true,
+    url: 'https://myedenfocus.rf.gd/',
+    component: null,
+    isFocus: false,
+  },
+  {
+    id: 8,
+    icon: ragionare,
+    title: 'Ragionare',
+    isExternalLink: true,
+    url: 'https://play.google.com/store/apps/details?id=com.gorai.ragionare',
+    component: null,
     isFocus: false,
   },
 ];
