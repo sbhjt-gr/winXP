@@ -216,6 +216,17 @@ function WinXP() {
     dispatch({ type: FOCUS_ICON, payload: id });
   }
   function onDoubleClickIcon(component) {
+    if (component === null) {
+      dispatch({
+        type: ADD_APP,
+        payload: {
+          ...appSettings.Error,
+          injectProps: { message: 'C:\\\nRecycle Bin\nEmpty' },
+        },
+      });
+      return;
+    }
+    
     const appSetting = Object.values(appSettings).find(
       setting => setting.component === component,
     );
