@@ -29,18 +29,36 @@ function Icons({
       .map(icon => icon.id);
     setSelectedIcons(selectedIds);
   }, [iconsRect, setSelectedIcons, selecting, mouse.docX, mouse.docY]);
+
+  const leftColumnIcons = icons.filter(icon => !icon.isExternalLink);
+  const rightColumnIcons = icons.filter(icon => icon.isExternalLink);
+
   return (
     <IconsContainer>
-      {icons.map(icon => (
-        <StyledIcon
-          key={icon.id}
-          {...icon}
-          displayFocus={displayFocus}
-          onMouseDown={onMouseDown}
-          onDoubleClick={onDoubleClick}
-          measure={measure}
-        />
-      ))}
+      <IconColumn>
+        {leftColumnIcons.map(icon => (
+          <StyledIcon
+            key={icon.id}
+            {...icon}
+            displayFocus={displayFocus}
+            onMouseDown={onMouseDown}
+            onDoubleClick={onDoubleClick}
+            measure={measure}
+          />
+        ))}
+      </IconColumn>
+      <IconColumn>
+        {rightColumnIcons.map(icon => (
+          <StyledIcon
+            key={icon.id}
+            {...icon}
+            displayFocus={displayFocus}
+            onMouseDown={onMouseDown}
+            onDoubleClick={onDoubleClick}
+            measure={measure}
+          />
+        ))}
+      </IconColumn>
     </IconsContainer>
   );
 }
@@ -92,6 +110,15 @@ const IconsContainer = styled.div`
   position: absolute;
   margin-top: 40px;
   margin-left: 40px;
+
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+`;
+
+const IconColumn = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const StyledIcon = styled(Icon)`
@@ -108,7 +135,6 @@ const StyledIcon = styled(Icon)`
     margin-top: 5px;
     display: flex;
     justify-content: center;
-
     &:before {
       content: '';
       display: block;
