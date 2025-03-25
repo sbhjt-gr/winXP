@@ -27,7 +27,7 @@ function Balloon({ startAfter = 3000, duration = 15000 }) {
           <div className="balloon__header">
             <img className="balloon__header__img" src={risk} alt="risk" />
             <span className="balloon__header__text">
-              No, your computer is not at risk, do not worry
+              No, your computer is not at risk
             </span>
           </div>
           <p className="balloon__text__first">

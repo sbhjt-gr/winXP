@@ -6,7 +6,7 @@ import smile from './smile.svg';
 
 function Search({ className, goMain, onSearch, query }) {
   const [value, setValue] = useState(query);
-  const [tag, setTag] = useState('All');
+  const [tag, setTag] = useState('Apps');
   function onChange(e) {
     setValue(e.target.value);
   }
@@ -18,15 +18,17 @@ function Search({ className, goMain, onSearch, query }) {
     onSearch(value);
   }
   function renderTags() {
-    return 'All,Maps,Images,News,Videos,More'.split(',').map(tagName => (
-      <div
-        onClick={() => setTag(tagName)}
-        className={`tag ${tagName === tag ? 'active' : ''}`}
-        key={tagName}
-      >
-        {tagName}
-      </div>
-    ));
+    return 'Apps,Games,Movies,Books,Children,Premium'
+      .split(',')
+      .map(tagName => (
+        <div
+          onClick={() => setTag(tagName)}
+          className={`tag ${tagName === tag ? 'active' : ''}`}
+          key={tagName}
+        >
+          {tagName}
+        </div>
+      ));
   }
   return (
     <div className={className}>
@@ -36,8 +38,8 @@ function Search({ className, goMain, onSearch, query }) {
             <img
               onClick={goMain}
               className="logo"
-              src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
-              alt="Google"
+              src="https://www.the-gorai-portfolio.com/playstore_logo.png"
+              alt="Play Store"
             />
             <div className="search-bar">
               <input
@@ -50,7 +52,7 @@ function Search({ className, goMain, onSearch, query }) {
               />
               <div className="icon">
                 <img
-                  src="https://www.gstatic.com/images/branding/googlemic/2x/googlemic_color_24dp.png"
+                  src="https://www.the-gorai-portfolio.com/microphone.png"
                   alt="microphone"
                 />
               </div>
@@ -61,34 +63,66 @@ function Search({ className, goMain, onSearch, query }) {
           </div>
           <div className="bar-items right">
             <div className="functions">
-              <img src={smile} alt="smile" />
+              <img src={smile} alt="user profile" />
             </div>
           </div>
         </div>
         <div className="app-bar">
           <div className="tags left">{renderTags()}</div>
           <div className="tags right">
+            <div className="tag">My apps</div>
             <div className="tag">Settings</div>
-            <div className="tag">Tools</div>
           </div>
         </div>
       </section>
       <section className="content">
+        <h2>App not found</h2>
         <p>
           Your search - <span id="search-in-content">{query}</span> - did not
-          match any documents.
+          match any applications in the Play Store.
         </p>
         <p>Suggestions</p>
         <ul>
-          <li>Make sure that all words are spelled correctly.</li>
-          <li>Try different keywords.</li>
-          <li>Try more general keywords.</li>
+          <li>Check if the app name is spelled correctly.</li>
+          <li>Try searching for similar apps.</li>
+          <li>Browse the categories for related applications.</li>
+          <li>Check if the app is available in your region.</li>
         </ul>
+
+        <div className="featured-apps">
+          <h3>Popular Apps</h3>
+          <div className="app-grid">
+            <div className="app-card">
+              <div className="app-icon"></div>
+              <div className="app-info">
+                <div className="app-name">Sample App 1</div>
+                <div className="app-rating">★★★★☆ 4.2</div>
+                <div className="app-price">Free</div>
+              </div>
+            </div>
+            <div className="app-card">
+              <div className="app-icon"></div>
+              <div className="app-info">
+                <div className="app-name">Sample App 2</div>
+                <div className="app-rating">★★★★★ 4.8</div>
+                <div className="app-price">Free</div>
+              </div>
+            </div>
+            <div className="app-card">
+              <div className="app-icon"></div>
+              <div className="app-info">
+                <div className="app-name">Sample App 3</div>
+                <div className="app-rating">★★★☆☆ 3.5</div>
+                <div className="app-price">$1.99</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
       <footer>
         <section className="upper">
           <div className="footer-items left">
-            <div className="item">Taiwan</div>
+            <div className="item">Your Country</div>
           </div>
         </section>
         <section className="lower">
@@ -191,8 +225,8 @@ export default styled(Search)`
     color: rgb(119, 119, 119);
   }
   .tag.active {
-    color: rgb(26, 115, 232);
-    border-bottom: 3px rgb(26, 115, 232) solid;
+    color: #01875f;
+    border-bottom: 3px #01875f solid;
     font-weight: 700;
   }
   .tag {
@@ -210,10 +244,74 @@ export default styled(Search)`
     p {
       margin: 16px 0;
     }
+    h2 {
+      margin-bottom: 16px;
+      color: #01875f;
+    }
+    h3 {
+      margin: 32px 0 16px 0;
+      color: #01875f;
+    }
   }
   #search-in-content {
     font-weight: 700;
   }
+
+  .featured-apps {
+    margin-top: 40px;
+  }
+
+  .app-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .app-card {
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  .app-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    background-color: #f1f1f1;
+    margin: 0 auto 8px;
+  }
+
+  .app-info {
+    text-align: center;
+  }
+
+  .app-name {
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  .app-rating {
+    font-size: 12px;
+    color: #757575;
+    margin-bottom: 4px;
+  }
+
+  .app-price {
+    font-size: 12px;
+    color: #01875f;
+    font-weight: 500;
+  }
+
   footer {
     position: absolute;
     bottom: 0;
@@ -307,6 +405,10 @@ export default styled(Search)`
     }
     footer .left .item {
       margin-right: 15px;
+    }
+
+    .app-grid {
+      justify-content: center;
     }
   }
 `;

@@ -17,15 +17,15 @@ function Main({ onSearch, className }) {
   return (
     <div className={className}>
       <header>
-        <div className="text">Gmail</div>
-        <div className="text">Images</div>
+        <div className="text">Apps</div>
+        <div className="text">Games</div>
         <img src={smile} alt="avatar" />
       </header>
       <section className="content">
         <img
           className="logo"
-          alt="Google"
-          src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+          alt="Play Store"
+          src="https://www.the-gorai-portfolio.com/playstore_logo.png"
         />
         <div className="search-bar">
           <input
@@ -35,17 +35,18 @@ function Main({ onSearch, className }) {
             onChange={onChange}
             value={value}
             onKeyDown={onKeyDown}
+            placeholder="Search for apps & games"
           />
           <div className="icon">
             <img
-              src="https://www.gstatic.com/images/branding/googlemic/2x/googlemic_color_24dp.png"
+              src="https://www.the-gorai-portfolio.com/microphone.png"
               alt="microphone"
             />
           </div>
         </div>
         <div className="buttons">
           <button onClick={onClick} id="enter">
-            Google Search
+            Search Play Store
           </button>
           <button>I'm Feeling Lucky</button>
         </div>
@@ -53,12 +54,12 @@ function Main({ onSearch, className }) {
       <footer>
         <section className="upper">
           <div className="items left">
-            <div className="item">Taiwan</div>
+            <div className="item">Your Country</div>
           </div>
         </section>
         <section className="lower">
           <div className="items left">
-            <div className="item">Advertising</div>
+            <div className="item">Developer Console</div>
             <div className="item">Business</div>
             <div className="item">About</div>
           </div>
@@ -115,7 +116,7 @@ export default styled(Main)`
       height: 46px;
       border: 1px solid rgba(0, 0, 0, 0.1);
       box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.2);
-      border-radius: 2px;
+      border-radius: 22px;
       display: flex;
       align-items: center;
       padding: 0 8px 0 16px;
@@ -161,15 +162,16 @@ export default styled(Main)`
         border: 0;
         font-weight: 700;
         font-size: 13px;
-        color: rgb(120, 120, 120);
+        color: white;
         border: 1px transparent solid;
-        background: rgb(242, 242, 242);
+        background: #01875f;
+        border-radius: 4px;
       }
       button:hover {
-        border-radius: 2px;
-        color: rgb(34, 34, 34);
-        background: rgb(248, 248, 248);
-        border: 1px rgb(198, 198, 198) solid;
+        border-radius: 4px;
+        color: white;
+        background: #026e4e;
+        border: 1px transparent solid;
         box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.1);
       }
     }

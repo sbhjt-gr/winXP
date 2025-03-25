@@ -226,7 +226,7 @@ function WinXP() {
       });
       return;
     }
-    
+
     const appSetting = Object.values(appSettings).find(
       setting => setting.component === component,
     );

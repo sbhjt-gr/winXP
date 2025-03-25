@@ -1,8 +1,8 @@
 {
-  "name": "winXP Portfolio",
+  "name": "winXP-Portfolio",
   "version": "0.1.0",
   "private": true,
-  "author": "ShizukuIchi <shizukuichi@gmail.com>",
+  "author": "ShizukuIchi <shizukuichi@gmail.com>, Subhajit Gorai <sage_mastermind@outlook.com>",
   "dependencies": {
     "lodash.samplesize": "^4.2.0",
     "react": "^16.8.6",

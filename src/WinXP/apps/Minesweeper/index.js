@@ -4,7 +4,6 @@ import sampleSize from 'lodash.samplesize';
 import { Config } from './config';
 import MinesweeperView from './MinesweeperView';
 
-
 function getInitState(difficulty = 'Beginner') {
   return {
     difficulty,
