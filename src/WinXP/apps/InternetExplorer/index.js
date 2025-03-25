@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-import { WindowDropDowns, Google } from 'components';
+import { WindowDropDowns } from 'components';
 import dropDownData from './dropDownData';
 import ie from 'assets/windowsIcons/ie-paper.png';
 import printer from 'assets/windowsIcons/17(32x32).png';
@@ -22,37 +22,109 @@ import stop from 'assets/windowsIcons/stop.png';
 import windows from 'assets/windowsIcons/windows.png';
 import dropdown from 'assets/windowsIcons/dropdown.png';
 
-function InternetExplorer({ onClose }) {
+function InternetExplorer({ onClose, isFocus }) {
   const [state, setState] = useState({
-    route: 'main',
-    query: '',
+    url: 'https://www.google.com',
+    inputUrl: 'https://www.google.com',
+    history: ['https://www.google.com'],
+    historyIndex: 0,
   });
-  function onSearch(str) {
-    if (str.length) {
+
+  function handleUrlChange(e) {
+    setState({
+      ...state,
+      inputUrl: e.target.value,
+    });
+  }
+
+  function handleKeyDown(e) {
+    if (e.key === 'Enter') {
+      navigateToUrl();
+    }
+  }
+
+  function navigateToUrl() {
+    // Validate URL - if no protocol is specified, add https://
+    let url = state.inputUrl;
+    if (!/^https?:\/\//i.test(url)) {
+      url = 'https://' + url;
+    }
+    // Update state with the new URL
+    const newHistory = [...state.history.slice(0, state.historyIndex + 1), url];
+    setState({
+      url: url,
+      inputUrl: url,
+      history: newHistory,
+      historyIndex: newHistory.length - 1,
+    });
+  }
+
+  function goBack() {
+    if (state.historyIndex > 0) {
+      const newIndex = state.historyIndex - 1;
       setState({
-        route: 'search',
-        query: str,
+        ...state,
+        url: state.history[newIndex],
+        inputUrl: state.history[newIndex],
+        historyIndex: newIndex,
       });
     }
   }
-  function goMain() {
+
+  function goForward() {
+    if (state.historyIndex < state.history.length - 1) {
+      const newIndex = state.historyIndex + 1;
+      setState({
+        ...state,
+        url: state.history[newIndex],
+        inputUrl: state.history[newIndex],
+        historyIndex: newIndex,
+      });
+    }
+  }
+
+  function refresh() {
     setState({
-      route: 'main',
-      query: '',
+      ...state,
+      url: state.url,
     });
   }
+
+  function goHome() {
+    const homeUrl = 'https://www.google.com';
+    const newHistory = [
+      ...state.history.slice(0, state.historyIndex + 1),
+      homeUrl,
+    ];
+    setState({
+      url: homeUrl,
+      inputUrl: homeUrl,
+      history: newHistory,
+      historyIndex: newHistory.length - 1,
+    });
+  }
+
   function onClickOptionItem(item) {
     switch (item) {
       case 'Close':
         onClose();
         break;
       case 'Home Page':
+        goHome();
+        break;
       case 'Back':
-        goMain();
+        goBack();
+        break;
+      case 'Forward':
+        goForward();
+        break;
+      case 'Refresh':
+        refresh();
         break;
       default:
     }
   }
+
   return (
     <Div>
       <section className="ie__toolbar">
@@ -67,36 +139,44 @@ function InternetExplorer({ onClose }) {
       </section>
       <section className="ie__function_bar">
         <div
-          onClick={goMain}
+          onClick={goBack}
           className={`ie__function_bar__button${
-            state.route === 'main' ? '--disable' : ''
+            state.historyIndex === 0 ? '--disable' : ''
           }`}
         >
           <img className="ie__function_bar__icon" src={back} alt="" />
           <span className="ie__function_bar__text">Back</span>
           <div className="ie__function_bar__arrow" />
         </div>
-        <div className="ie__function_bar__button--disable">
+        <div
+          onClick={goForward}
+          className={`ie__function_bar__button${
+            state.historyIndex === state.history.length - 1 ? '--disable' : ''
+          }`}
+        >
           <img className="ie__function_bar__icon" src={forward} alt="" />
           <div className="ie__function_bar__arrow" />
         </div>
-        <div className="ie__function_bar__button">
+        <div
+          className="ie__function_bar__button"
+          onClick={() => setState({ ...state, url: 'about:blank' })}
+        >
           <img className="ie__function_bar__icon--margin-1" src={stop} alt="" />
         </div>
-        <div className="ie__function_bar__button">
+        <div className="ie__function_bar__button" onClick={refresh}>
           <img
             className="ie__function_bar__icon--margin-1"
             src={refresh}
             alt=""
           />
         </div>
-        <div className="ie__function_bar__button" onClick={goMain}>
+        <div className="ie__function_bar__button" onClick={goHome}>
           <img className="ie__function_bar__icon--margin-1" src={home} alt="" />
         </div>
         <div className="ie__function_bar__separate" />
         <div className="ie__function_bar__button">
           <img
-            className="ie__function_bar__icon--normalize "
+            className="ie__function_bar__icon--normalize"
             src={search}
             alt=""
           />
@@ -136,20 +216,20 @@ function InternetExplorer({ onClose }) {
         <div className="ie__address_bar__title">Address</div>
         <div className="ie__address_bar__content">
           <img src={ie} alt="ie" className="ie__address_bar__content__img" />
-          <div className="ie__address_bar__content__text">
-            {`https://www.the-gorai-portfolio.com${
-              state.route === 'search'
-                ? `/search?q=${encodeURIComponent(state.query)}`
-                : ''
-            }`}
-          </div>
+          <input
+            type="text"
+            className="ie__address_bar__content__text"
+            value={state.inputUrl}
+            onChange={handleUrlChange}
+            onKeyDown={handleKeyDown}
+          />
           <img
             src={dropdown}
             alt="dropdown"
             className="ie__address_bar__content__img"
           />
         </div>
-        <div className="ie__address_bar__go">
+        <div className="ie__address_bar__go" onClick={navigateToUrl}>
           <img className="ie__address_bar__go__img" src={go} alt="go" />
           <span className="ie__address_bar__go__text">Go</span>
         </div>
@@ -165,12 +245,23 @@ function InternetExplorer({ onClose }) {
       </section>
       <div className="ie__content">
         <div className="ie__content__inner">
-          <Google
-            route={state.route}
-            query={state.query}
-            onSearch={onSearch}
-            goMain={goMain}
+          <iframe
+            src={state.url}
+            title="Internet Explorer"
+            className="ie__content__iframe"
+            sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
           />
+          {!isFocus && (
+            <div
+              style={{
+                width: '100%',
+                height: '100%',
+                position: 'absolute',
+                left: 0,
+                top: 0,
+              }}
+            />
+          )}
         </div>
       </div>
       <footer className="ie__footer">
@@ -338,132 +429,141 @@ const Div = styled.div`
       width: 14px;
       height: 14px;
     }
-    &__img:last-child {
-      width: 15px;
-      height: 15px;
-      right: 1px;
-      position: absolute;
-    }
-    &__img:last-child:hover {
-      filter: brightness(1.1);
-    }
     &__text {
-      position: absolute;
-      white-space: nowrap;
-      left: 16px;
-      right: 17px;
-      overflow: hidden;
+      flex: 1;
+      border: none;
+      outline: none;
+      width: 100%;
+      padding: 0 5px;
+      font-size: 11px;
     }
   }
   .ie__address_bar__go {
     display: flex;
     align-items: center;
-    padding: 0 18px 0 5px;
+    padding: 0 5px;
     height: 100%;
     position: relative;
     &__img {
       height: 95%;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      margin-right: 3px;
-    }
-  }
-  .ie__address_bar__links {
-    display: flex;
-    align-items: center;
-    padding: 0 18px 0 5px;
-    height: 100%;
-    position: relative;
-    &__img {
-      position: absolute;
-      right: 2px;
-      top: 3px;
-      height: 5px;
-      width: 8px;
+      border-radius: 3px 0 0 0;
+      padding: 3px;
+      background-color: #dedede;
+      box-shadow: inset 1px 1px 0px white, inset -1px -1px 0px rgb(26, 26, 26);
     }
     &__text {
-      color: rgba(0, 0, 0, 0.5);
+      line-height: 100%;
+      background-color: #dedede;
+      height: 95%;
+      border-radius: 0 3px 0 0;
+      padding: 3px 5px 3px 0px;
+      box-shadow: inset 1px 1px 0px white, inset -1px -1px 0px rgb(26, 26, 26);
+    }
+    &:hover {
+      filter: brightness(1.1);
+    }
+    &:hover:active {
+      & > * {
+        transform: translate(1px, 1px);
+        transition: transform 0.2s;
+      }
     }
   }
   .ie__address_bar__separate {
     height: 100%;
     width: 1px;
     background-color: rgba(0, 0, 0, 0.1);
-    box-shadow: 1px 0 rgba(255, 255, 255, 0.7);
+    margin: 0 2px;
+  }
+  .ie__address_bar__links {
+    display: flex;
+    align-items: center;
+    padding: 0 7px;
+    height: 100%;
+    position: relative;
+    &__img {
+      height: 95%;
+      padding: 0 4px;
+    }
+    &__text {
+      line-height: 100%;
+      height: 95%;
+      padding: 3px 0px;
+    }
   }
   .ie__content {
     flex: 1;
+    position: relative;
+    margin-top: 3px;
     overflow: auto;
-    padding-left: 1px;
-    border-left: 1px solid #6f6f6f;
-    background-color: #f1f1f1;
-    position: relative;
-  }
-  .ie__content__inner {
-    position: relative;
-    min-height: 800px;
-    min-width: 800px;
-    width: 100%;
-    height: 100%;
+    background-color: white;
+    border-top: 1px solid rgba(255, 255, 255, 0.7);
+    &__inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    &__iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
   }
   .ie__footer {
     height: 20px;
-    border-top: 1px solid transparent;
-    box-shadow: inset 0 1px 3px rgba(50, 50, 50, 0.8);
     background-color: rgb(236, 233, 216);
     display: flex;
     align-items: center;
-    padding-top: 2px;
+    padding-left: 2px;
+    font-size: 11px;
+    flex-shrink: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
   .ie__footer__status {
-    flex: 1;
-    height: 100%;
     display: flex;
     align-items: center;
-    padding-left: 2px;
+    height: 80%;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    padding-right: 10px;
     &__text {
-      font-size: 11px;
+      margin-left: 3px;
     }
     &__img {
-      height: 14px;
-      width: 14px;
-      margin-right: 3px;
+      height: 13px;
     }
   }
   .ie__footer__block {
-    height: 85%;
-    width: 22px;
-    border-left: 1px solid rgba(0, 0, 0, 0.15);
-    box-shadow: inset 1px 0 rgba(255, 255, 255, 0.7);
+    width: 14px;
+    height: 80%;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
   }
   .ie__footer__right {
     display: flex;
     align-items: center;
-    width: 150px;
-    height: 80%;
-    border-left: 1px solid rgba(0, 0, 0, 0.11);
-    box-shadow: inset 1px 0 rgba(255, 255, 255, 0.7);
-    padding-left: 5px;
-    position: relative;
+    margin-left: auto;
+    margin-right: 20px;
     &__text {
-      font-size: 11px;
+      margin-left: 5px;
+      margin-right: 20px;
     }
     &__img {
-      height: 14px;
-      width: 14px;
-      margin-right: 3px;
+      height: 15px;
     }
     &__dots {
-      position: absolute;
-      right: 11px;
-      bottom: -1px;
-      width: 2px;
-      height: 2px;
-      box-shadow: 2px 0px rgba(0, 0, 0, 0.25), 5.5px 0px rgba(0, 0, 0, 0.25),
-        9px 0px rgba(0, 0, 0, 0.25), 5.5px -3.5px rgba(0, 0, 0, 0.25),
-        9px -3.5px rgba(0, 0, 0, 0.25), 9px -7px rgba(0, 0, 0, 0.25),
-        3px 1px rgba(255, 255, 255, 1), 6.5px 1px rgba(255, 255, 255, 1),
-        10px 1px rgba(255, 255, 255, 1), 10px -2.5px rgba(255, 255, 255, 1),
-        10px -6px rgba(255, 255, 255, 1);
+      height: 4px;
+      width: 4px;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px rgb(90, 90, 90);
+      margin: 0 7px;
+    }
+  }
+
+  @media (max-width: 800px) {
+    .ie__function_bar {
+      display: none;
+    }
+    .ie__address_bar {
+      display: none;
     }
   }
 `;
