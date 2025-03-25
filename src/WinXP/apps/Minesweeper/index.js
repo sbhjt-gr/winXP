@@ -4,18 +4,6 @@ import sampleSize from 'lodash.samplesize';
 import { Config } from './config';
 import MinesweeperView from './MinesweeperView';
 
-// state: {
-//   difficulty: 'Beginner' || 'Intermediate' || 'Expert',
-//   status: 'new' || 'started' || 'died' || 'won',
-//   rows: Number,
-//   columns: Number,
-//   mines: Number,
-//   ceils: Array {
-//     state: 'cover' || 'flag' || 'unknown' || 'open' || 'die' || 'misflagged',
-//     minesAround: Number (negative for mine itself),
-//     opening: true || false
-//   }
-// }
 
 function getInitState(difficulty = 'Beginner') {
   return {
