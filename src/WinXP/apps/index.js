@@ -149,7 +149,7 @@ export const defaultIconState = [
     component: InternetExplorer,
     isFocus: false,
     injectProps: {
-      defaultUrl: '/subhajit-resume.pdf'
+      defaultUrl: '/static/subhajit-resume.pdf'
     }
   },
   {
