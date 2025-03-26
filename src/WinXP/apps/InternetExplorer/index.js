@@ -249,7 +249,8 @@ function InternetExplorer({ onClose, isFocus, defaultUrl }) {
             title="Internet Explorer"
             className="ie__content__iframe"
             style={{ width: '100%', height: '100%', border: 'none' }}
-            allow="*"
+            allow="*; clipboard-write; clipboard-read"
+            referrerPolicy="no-referrer"
           />
           {!isFocus && (
             <div
