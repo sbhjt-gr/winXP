@@ -160,7 +160,11 @@ export const defaultIconState = [
     component: Notepad,
     isFocus: false,
     injectProps: {
-      defaultText: "My passion for technology started in 2016 when I first started building websites using PHP and free domains. Since then, I've been on an exciting journey of learning and growth in the tech world."
+      defaultText: "Hi, I'm Subhajit Gorai, and I'm a 3rd year student at Heritage Institute of Technology.\n\n\n" +
+        "I have been passionate about tech since my childhood. I started building websites with PHP as back-end since the late 2016 and used free domains from Freenom.com paired with Cloudflare CDN to host them on shared hosting sites. Although, I have moved on to different tech stacks now, the experience that I've brought from the past by building stuff, remains consistent.\n\n\n" +
+        "Why Windows XP themed portfolio?\n\n" +
+        "I think differently from others and I try to be more creative. While others are busy in picking the ultra-flashy templates to build their portfolio websites, I decided to fork ShizukuIchi's winXP and added extra features & changes to it to make it look more like a portfolio. I have maintained the retro-styles, and also made the Internet Explorer browsable, so that it can browse through my links.\n\n\n" +
+        "Windows XP was my favourite Windows Operating System in my childhood, this is one of the reasons of using such themed portfolio."
     }
   },
   {
