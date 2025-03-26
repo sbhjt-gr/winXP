@@ -19,6 +19,7 @@ import paint from 'assets/windowsIcons/680(16x16).png';
 import recycleBin from 'assets/windowsIcons/recycling_bin.webp';
 import myedenfocus from 'components/Google/myedenfocus.png';
 import ragionare from 'components/Google/ragionare.png';
+import { resumeIcon, aboutIcon, githubIcon, linkedinIcon } from 'components/Portfolio';
 
 const gen = () => {
   let id = -1;
@@ -137,6 +138,46 @@ export const defaultIconState = [
     title: 'Ragionare',
     isExternalLink: true,
     url: 'https://play.google.com/store/apps/details?id=com.gorai.ragionare',
+    component: null,
+    isFocus: false,
+  },
+  {
+    id: 9,
+    icon: resumeIcon,
+    title: 'Resume',
+    isExternalLink: true,
+    component: InternetExplorer,
+    isFocus: false,
+    injectProps: {
+      defaultUrl: './assets/portfolio/temp.pdf'
+    }
+  },
+  {
+    id: 10,
+    icon: aboutIcon,
+    title: 'About Me',
+    isExternalLink: true,
+    component: Notepad,
+    isFocus: false,
+    injectProps: {
+      defaultText: "My passion for technology started in 2016 when I first started building websites using PHP and free domains. Since then, I've been on an exciting journey of learning and growth in the tech world."
+    }
+  },
+  {
+    id: 11,
+    icon: githubIcon,
+    title: 'GitHub',
+    isExternalLink: true,
+    url: 'https://github.com/ShizukuKazuki',
+    component: null,
+    isFocus: false,
+  },
+  {
+    id: 12,
+    icon: linkedinIcon,
+    title: 'LinkedIn',
+    isExternalLink: true,
+    url: 'https://www.linkedin.com/in/kazuki-yamashita-b962b7297/',
     component: null,
     isFocus: false,
   },

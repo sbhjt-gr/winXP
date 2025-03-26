@@ -216,6 +216,30 @@ function WinXP() {
     dispatch({ type: FOCUS_ICON, payload: id });
   }
   function onDoubleClickIcon(component, icon) {
+    // Special case for Resume which should open in IE despite being in external links column
+    if (icon?.title === 'Resume') {
+      dispatch({
+        type: ADD_APP,
+        payload: {
+          ...appSettings['Internet Explorer'],
+          injectProps: icon.injectProps,
+        },
+      });
+      return;
+    }
+
+    // Special case for About Me which should open in Notepad with default text
+    if (icon?.title === 'About Me') {
+      dispatch({
+        type: ADD_APP,
+        payload: {
+          ...appSettings.Notepad,
+          injectProps: icon.injectProps,
+        },
+      });
+      return;
+    }
+
     if (icon?.isExternalLink) {
       window.open(icon.url, '_blank');
       return;

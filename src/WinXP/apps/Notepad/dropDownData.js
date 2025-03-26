@@ -109,6 +109,7 @@ const Format = [
   {
     type: 'item',
     text: 'Word Wrap',
+    symbol: 'check',
   },
   {
     type: 'item',

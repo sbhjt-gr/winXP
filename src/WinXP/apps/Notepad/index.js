@@ -4,9 +4,9 @@ import styled from 'styled-components';
 import { WindowDropDowns } from 'components';
 import dropDownData from './dropDownData';
 
-export default function Notepad({ onClose }) {
-  const [docText, setDocText] = useState('');
-  const [wordWrap, setWordWrap] = useState(false);
+export default function Notepad({ onClose, defaultText = '' }) {
+  const [docText, setDocText] = useState(defaultText);
+  const [wordWrap, setWordWrap] = useState(true);
 
   function onClickOptionItem(item) {
     switch (item) {
