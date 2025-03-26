@@ -28,18 +28,9 @@ function InternetExplorer({ onClose, isFocus, defaultUrl }) {
     inputUrl: defaultUrl || 'https://myedenfocus.rf.gd/',
     history: [defaultUrl || 'https://myedenfocus.rf.gd/'],
     historyIndex: 0,
-    displayUrl: defaultUrl || 'https://myedenfocus.rf.gd/',
+    isLoading: true,
+    error: null
   });
-
-  function constructProxyUrl(targetUrl) {
-    if (targetUrl.startsWith('https://myedenfocus.rf.gd/') || 
-        targetUrl.startsWith('./') || 
-        targetUrl.startsWith('file:///') ||
-        targetUrl === 'about:blank') {
-      return targetUrl;
-    }
-    return `https://myedenfocus.rf.gd/router?url=${encodeURIComponent(targetUrl)}`;
-  }
 
   function handleUrlChange(e) {
     setState({
@@ -55,17 +46,15 @@ function InternetExplorer({ onClose, isFocus, defaultUrl }) {
   }
 
   function navigateToUrl() {
-    let displayUrl = state.inputUrl;
-    if (!displayUrl.startsWith('./') && !displayUrl.startsWith('file:///') && !/^https?:\/\//i.test(displayUrl)) {
-      displayUrl = 'https://' + displayUrl;
+    let url = state.inputUrl;
+    if (!url.startsWith('./') && !url.startsWith('file:///') && !/^https?:\/\//i.test(url)) {
+      url = 'https://' + url;
     }
     
-    const proxyUrl = constructProxyUrl(displayUrl);
-    const newHistory = [...state.history.slice(0, state.historyIndex + 1), displayUrl];
+    const newHistory = [...state.history.slice(0, state.historyIndex + 1), url];
     setState({
-      url: proxyUrl,
-      inputUrl: displayUrl,
-      displayUrl: displayUrl,
+      url: url,
+      inputUrl: url,
       history: newHistory,
       historyIndex: newHistory.length - 1,
     });
@@ -74,13 +63,10 @@ function InternetExplorer({ onClose, isFocus, defaultUrl }) {
   function goBack() {
     if (state.historyIndex > 0) {
       const newIndex = state.historyIndex - 1;
-      const displayUrl = state.history[newIndex];
-      const proxyUrl = constructProxyUrl(displayUrl);
       setState({
         ...state,
-        url: proxyUrl,
-        inputUrl: displayUrl,
-        displayUrl: displayUrl,
+        url: state.history[newIndex],
+        inputUrl: state.history[newIndex],
         historyIndex: newIndex,
       });
     }
@@ -89,23 +75,19 @@ function InternetExplorer({ onClose, isFocus, defaultUrl }) {
   function goForward() {
     if (state.historyIndex < state.history.length - 1) {
       const newIndex = state.historyIndex + 1;
-      const displayUrl = state.history[newIndex];
-      const proxyUrl = constructProxyUrl(displayUrl);
       setState({
         ...state,
-        url: proxyUrl,
-        inputUrl: displayUrl,
-        displayUrl: displayUrl,
+        url: state.history[newIndex],
+        inputUrl: state.history[newIndex],
         historyIndex: newIndex,
       });
     }
   }
 
   function refresh() {
-    const proxyUrl = constructProxyUrl(state.displayUrl);
     setState({
       ...state,
-      url: proxyUrl,
+      url: state.url,
     });
   }
 
@@ -118,7 +100,6 @@ function InternetExplorer({ onClose, isFocus, defaultUrl }) {
     setState({
       url: homeUrl,
       inputUrl: homeUrl,
-      displayUrl: homeUrl,
       history: newHistory,
       historyIndex: newHistory.length - 1,
     });
@@ -143,6 +124,22 @@ function InternetExplorer({ onClose, isFocus, defaultUrl }) {
         break;
       default:
     }
+  }
+
+  function handleIframeLoad() {
+    setState(prev => ({
+      ...prev,
+      isLoading: false,
+      error: null
+    }));
+  }
+
+  function handleIframeError() {
+    setState(prev => ({
+      ...prev,
+      isLoading: false,
+      error: 'The webpage cannot be loaded. Please check your internet connection or try again later.'
+    }));
   }
 
   return (
@@ -272,7 +269,21 @@ function InternetExplorer({ onClose, isFocus, defaultUrl }) {
             style={{ width: '100%', height: '100%', border: 'none' }}
             allow="*; clipboard-write; clipboard-read"
             referrerPolicy="no-referrer"
+            onLoad={handleIframeLoad}
+            onError={handleIframeError}
           />
+          {state.isLoading && (
+            <div className="ie__content__loading">
+              <div className="ie__content__loading__spinner" />
+              <span>Loading...</span>
+            </div>
+          )}
+          {state.error && (
+            <div className="ie__content__error">
+              <img src={stop} alt="error" className="ie__content__error__icon" />
+              <p>{state.error}</p>
+            </div>
+          )}
           {!isFocus && (
             <div
               style={{
@@ -290,7 +301,9 @@ function InternetExplorer({ onClose, isFocus, defaultUrl }) {
       <footer className="ie__footer">
         <div className="ie__footer__status">
           <img className="ie__footer__status__img" src={ie} alt="" />
-          <span className="ie__footer__status__text">Done</span>
+          <span className="ie__footer__status__text">
+            {state.isLoading ? 'Loading...' : state.error ? 'Error' : 'Done'}
+          </span>
         </div>
         <div className="ie__footer__block" />
         <div className="ie__footer__block" />
@@ -579,6 +592,64 @@ const Div = styled.div`
       box-shadow: 0 0 0 2px rgb(90, 90, 90);
       margin: 0 7px;
     }
+  }
+
+  .ie__content__loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    z-index: 1;
+    
+    &__spinner {
+      width: 32px;
+      height: 32px;
+      margin-bottom: 8px;
+      border: 4px solid #f3f3f3;
+      border-top: 4px solid #3498db;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+  }
+
+  .ie__content__error {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    z-index: 1;
+    padding: 20px;
+    text-align: center;
+
+    &__icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 16px;
+    }
+
+    p {
+      color: #000;
+      font-size: 13px;
+      max-width: 80%;
+      margin: 0;
+    }
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
 
   @media (max-width: 800px) {
