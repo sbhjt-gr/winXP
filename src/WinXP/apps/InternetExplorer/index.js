@@ -606,16 +606,30 @@ const Div = styled.div`
     justify-content: center;
     background: white;
     z-index: 1;
+    cursor: wait;
     
     &__spinner {
-      width: 32px;
-      height: 32px;
+      width: 16px;
+      height: 16px;
       margin-bottom: 8px;
-      border: 4px solid #f3f3f3;
-      border-top: 4px solid #3498db;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
+      background: url(${ie});
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: pulse 1s ease-in-out infinite;
     }
+
+    span {
+      color: #000;
+      font-size: 11px;
+      font-family: Tahoma;
+      margin-top: 4px;
+    }
+  }
+
+  @keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
   }
 
   .ie__content__error {
@@ -630,34 +644,19 @@ const Div = styled.div`
     justify-content: center;
     background: white;
     z-index: 1;
-    padding: 20px;
-    text-align: center;
-
+    cursor: pointer;
+    
     &__icon {
-      width: 48px;
-      height: 48px;
-      margin-bottom: 16px;
+      height: 32px;
+      width: 32px;
+      margin-bottom: 8px;
     }
-
+    
     p {
       color: #000;
-      font-size: 13px;
-      max-width: 80%;
-      margin: 0;
-    }
-  }
-
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-
-  @media (max-width: 800px) {
-    .ie__function_bar {
-      display: none;
-    }
-    .ie__address_bar {
-      display: none;
+      font-size: 11px;
+      font-family: Tahoma;
+      text-align: center;
     }
   }
 `;
