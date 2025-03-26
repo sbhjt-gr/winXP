@@ -20,6 +20,7 @@ import msn from 'assets/windowsIcons/msn.png';
 import stop from 'assets/windowsIcons/stop.png';
 import windows from 'assets/windowsIcons/windows.png';
 import dropdown from 'assets/windowsIcons/dropdown.png';
+import refreshIcon from 'assets/windowsIcons/refresh.png';
 
 function InternetExplorer({ onClose, isFocus, defaultUrl }) {
   const [state, setState] = useState({
@@ -164,7 +165,7 @@ function InternetExplorer({ onClose, isFocus, defaultUrl }) {
         <div className="ie__function_bar__button" onClick={refresh}>
           <img
             className="ie__function_bar__icon--margin-1"
-            src={refresh}
+            src={refreshIcon}
             alt=""
           />
         </div>
