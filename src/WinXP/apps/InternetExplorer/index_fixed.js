@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { WindowDropDowns } from 'components';
@@ -48,12 +48,17 @@ function InternetExplorer({ onClose, isFocus }) {
     if (!/^https?:\/\//i.test(url)) {
       url = 'https://' + url;
     }
-    
+
     // Use a CORS proxy to bypass restrictions
-    const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
-    
+    const proxyUrl = `https://cors-anywhere.herokuapp.com/${encodeURIComponent(
+      url,
+    )}`;
+
     // Update state with the new URL
-    const newHistory = [...state.history.slice(0, state.historyIndex + 1), proxyUrl];
+    const newHistory = [
+      ...state.history.slice(0, state.historyIndex + 1),
+      proxyUrl,
+    ];
     setState({
       url: proxyUrl,
       inputUrl: url, // Keep the original URL in the input
