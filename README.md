@@ -1,12 +1,12 @@
 # Windows XP Portfolio
 
-🖥️ A Windows XP desktop recreation built with React and Hooks, serving as my personal portfolio website.
+🖥️ A Windows XP desktop recreation built with React and Hooks, serving as my personal portfolio website. This extends the original work of [winXP](https://github.com/ShizukuIchi/winXP) by [ShizukuIchi](https://github.com/ShizukuIchi). This also includes an extended web browsable Internet Explorer.
 
 ## Overview
 
 This project is a creative take on showcasing my portfolio through a fully interactive Windows XP interface. Experience the Windows XP while exploring my work!
 
-## Features of [winXP](https://github.com/ShizukuIchi/winXP)
+## Features of winXP
 
 * Fully interactive Windows XP desktop environment
 * Classic Windows XP window management
