@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Folder base -->
+  <path d="M3 6H13L15 8H29V26H3V6Z" fill="#ECE9D8" stroke="#857F63" stroke-width="1"/>
+  
+  <!-- Folder body with gradient -->
+  <path d="M3 8H29V26H3V8Z" fill="url(#paint0_linear)"/>
+  
+  <!-- Documents -->
+  <rect x="7" y="12" width="10" height="12" fill="white" stroke="#0A246A" stroke-width="0.7"/>
+  <rect x="15" y="10" width="10" height="12" fill="white" stroke="#0A246A" stroke-width="0.7"/>
+  
+  <!-- Document lines -->
+  <path d="M9 15H15" stroke="#0A246A" stroke-width="0.7"/>
+  <path d="M9 17H15" stroke="#0A246A" stroke-width="0.7"/>
+  <path d="M9 19H15" stroke="#0A246A" stroke-width="0.7"/>
+  <path d="M9 21H15" stroke="#0A246A" stroke-width="0.7"/>
+  
+  <path d="M17 13H23" stroke="#0A246A" stroke-width="0.7"/>
+  <path d="M17 15H23" stroke="#0A246A" stroke-width="0.7"/>
+  <path d="M17 17H23" stroke="#0A246A" stroke-width="0.7"/>
+  <path d="M17 19H23" stroke="#0A246A" stroke-width="0.7"/>
+  
+  <!-- Gradient definition -->
+  <defs>
+    <linearGradient id="paint0_linear" x1="16" y1="8" x2="16" y2="26" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FDF7E9"/>
+      <stop offset="1" stop-color="#FFC550"/>
+    </linearGradient>
+  </defs>
+</svg> 

@@ -240,6 +240,18 @@ function WinXP() {
       return;
     }
 
+    // Special case for My Work which should open in IE with work.html
+    if (icon?.title === 'My Work') {
+      dispatch({
+        type: ADD_APP,
+        payload: {
+          ...appSettings['Internet Explorer'],
+          injectProps: icon.injectProps,
+        },
+      });
+      return;
+    }
+
     if (icon?.isExternalLink) {
       window.open(icon.url, '_blank');
       return;
