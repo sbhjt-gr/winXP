@@ -31,7 +31,39 @@ const gen = () => {
 };
 const genId = gen();
 const genIndex = gen();
-export const defaultAppState = [
+
+const isMobileDevice = () => {
+  const userAgent = window.navigator.userAgent || window.navigator.vendor || window.opera;
+  return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent.toLowerCase());
+};
+
+export const defaultAppState = isMobileDevice() ? [
+  {
+    component: ErrorBox,
+    header: {
+      icon: error,
+      title: 'Windows XP',
+      buttons: ['close'],
+      noFooterWindow: true,
+    },
+    defaultSize: {
+      width: 380,
+      height: 0,
+    },
+    defaultOffset: {
+      x: window.innerWidth / 2 - 190,
+      y: window.innerHeight / 2 - 60,
+    },
+    resizable: false,
+    minimized: false,
+    maximized: false,
+    id: genId(),
+    zIndex: genIndex(),
+    injectProps: {
+      message: 'For the best Windows XP experience, please open this website on a desktop browser.'
+    }
+  }
+] : [
   {
     component: InternetExplorer,
     header: {
