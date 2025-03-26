@@ -28,7 +28,18 @@ function InternetExplorer({ onClose, isFocus, defaultUrl }) {
     inputUrl: defaultUrl || 'https://myedenfocus.rf.gd/',
     history: [defaultUrl || 'https://myedenfocus.rf.gd/'],
     historyIndex: 0,
+    displayUrl: defaultUrl || 'https://myedenfocus.rf.gd/',
   });
+
+  function constructProxyUrl(targetUrl) {
+    if (targetUrl.startsWith('https://myedenfocus.rf.gd/') || 
+        targetUrl.startsWith('./') || 
+        targetUrl.startsWith('file:///') ||
+        targetUrl === 'about:blank') {
+      return targetUrl;
+    }
+    return `https://myedenfocus.rf.gd/router?url=${encodeURIComponent(targetUrl)}`;
+  }
 
   function handleUrlChange(e) {
     setState({
@@ -44,15 +55,17 @@ function InternetExplorer({ onClose, isFocus, defaultUrl }) {
   }
 
   function navigateToUrl() {
-    let url = state.inputUrl;
-    if (!url.startsWith('./') && !url.startsWith('file:///') && !/^https?:\/\//i.test(url)) {
-      url = 'https://' + url;
+    let displayUrl = state.inputUrl;
+    if (!displayUrl.startsWith('./') && !displayUrl.startsWith('file:///') && !/^https?:\/\//i.test(displayUrl)) {
+      displayUrl = 'https://' + displayUrl;
     }
     
-    const newHistory = [...state.history.slice(0, state.historyIndex + 1), url];
+    const proxyUrl = constructProxyUrl(displayUrl);
+    const newHistory = [...state.history.slice(0, state.historyIndex + 1), displayUrl];
     setState({
-      url: url,
-      inputUrl: url,
+      url: proxyUrl,
+      inputUrl: displayUrl,
+      displayUrl: displayUrl,
       history: newHistory,
       historyIndex: newHistory.length - 1,
     });
@@ -61,10 +74,13 @@ function InternetExplorer({ onClose, isFocus, defaultUrl }) {
   function goBack() {
     if (state.historyIndex > 0) {
       const newIndex = state.historyIndex - 1;
+      const displayUrl = state.history[newIndex];
+      const proxyUrl = constructProxyUrl(displayUrl);
       setState({
         ...state,
-        url: state.history[newIndex],
-        inputUrl: state.history[newIndex],
+        url: proxyUrl,
+        inputUrl: displayUrl,
+        displayUrl: displayUrl,
         historyIndex: newIndex,
       });
     }
@@ -73,19 +89,23 @@ function InternetExplorer({ onClose, isFocus, defaultUrl }) {
   function goForward() {
     if (state.historyIndex < state.history.length - 1) {
       const newIndex = state.historyIndex + 1;
+      const displayUrl = state.history[newIndex];
+      const proxyUrl = constructProxyUrl(displayUrl);
       setState({
         ...state,
-        url: state.history[newIndex],
-        inputUrl: state.history[newIndex],
+        url: proxyUrl,
+        inputUrl: displayUrl,
+        displayUrl: displayUrl,
         historyIndex: newIndex,
       });
     }
   }
 
   function refresh() {
+    const proxyUrl = constructProxyUrl(state.displayUrl);
     setState({
       ...state,
-      url: state.url,
+      url: proxyUrl,
     });
   }
 
@@ -98,6 +118,7 @@ function InternetExplorer({ onClose, isFocus, defaultUrl }) {
     setState({
       url: homeUrl,
       inputUrl: homeUrl,
+      displayUrl: homeUrl,
       history: newHistory,
       historyIndex: newHistory.length - 1,
     });
