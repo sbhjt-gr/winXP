@@ -60,7 +60,7 @@ export const defaultAppState = isMobileDevice() ? [
     id: genId(),
     zIndex: genIndex(),
     injectProps: {
-      message: 'For the best Windows XP experience, please open this website on a desktop browser.'
+      message: 'Please open this website on a desktop browser for the best experience.'
     }
   }
 ] : [
