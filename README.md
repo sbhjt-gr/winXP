@@ -1,4 +1,4 @@
-# Windows XP Portfolio - Subhajit Gorai
+# Windows XP Portfolio
 
 🖥️ A Windows XP desktop recreation built with React and Hooks, serving as my personal portfolio website.
 
@@ -6,7 +6,7 @@
 
 This project is a creative take on showcasing my portfolio through a fully interactive Windows XP interface. Experience the Windows XP while exploring my work!
 
-## Features
+## Features of [winXP](https://github.com/ShizukuIchi/winXP)
 
 * Fully interactive Windows XP desktop environment
 * Classic Windows XP window management
