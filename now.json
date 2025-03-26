@@ -18,6 +18,7 @@
     { "src": "/asset-manifest.json", "dest": "/asset-manifest.json" },
     { "src": "/manifest.json", "dest": "/manifest.json" },
     { "src": "^/.*\\.(pdf)$", "dest": "/$1" },
+    { "src": "^/.*\\.(html)$", "dest": "/$1" },
     {
       "src": "/(.*)",
       "headers": { "cache-control": "s-maxage=0" },
