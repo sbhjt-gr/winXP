@@ -149,7 +149,7 @@ export const defaultIconState = [
     component: InternetExplorer,
     isFocus: false,
     injectProps: {
-      defaultUrl: 'https://myedenfocus.rf.gd/subhajit-resume.pdf'
+      defaultUrl: '/subhajit-resume.pdf'
     }
   },
   {
