@@ -19,6 +19,7 @@ import paint from 'assets/windowsIcons/680(16x16).png';
 import recycleBin from 'assets/windowsIcons/recycling_bin.webp';
 import myedenfocus from 'components/Google/myedenfocus.png';
 import ragionare from 'components/Google/ragionare.png';
+import { resumeIcon, aboutIcon, githubIcon, linkedinIcon } from 'components/Portfolio';
 
 const gen = () => {
   let id = -1;
@@ -137,6 +138,42 @@ export const defaultIconState = [
     title: 'Ragionare',
     isExternalLink: true,
     url: 'https://play.google.com/store/apps/details?id=com.gorai.ragionare',
+    component: null,
+    isFocus: false,
+  },
+  {
+    id: 9,
+    icon: resumeIcon,
+    title: 'Resume',
+    isExternalLink: true,
+    url: 'https://your-resume-url.com',
+    component: null,
+    isFocus: false,
+  },
+  {
+    id: 10,
+    icon: aboutIcon,
+    title: 'About Me',
+    isExternalLink: true,
+    url: 'https://your-about-me-url.com',
+    component: null,
+    isFocus: false,
+  },
+  {
+    id: 11,
+    icon: githubIcon,
+    title: 'GitHub',
+    isExternalLink: true,
+    url: 'https://github.com/yourusername',
+    component: null,
+    isFocus: false,
+  },
+  {
+    id: 12,
+    icon: linkedinIcon,
+    title: 'LinkedIn',
+    isExternalLink: true,
+    url: 'https://linkedin.com/in/yourusername',
     component: null,
     isFocus: false,
   },

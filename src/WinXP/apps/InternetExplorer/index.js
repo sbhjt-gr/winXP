@@ -49,14 +49,10 @@ function InternetExplorer({ onClose, isFocus }) {
       url = 'https://' + url;
     }
     
-    // Use a CORS proxy to bypass restrictions
-    const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`;
-    
-    // Update state with the new URL
-    const newHistory = [...state.history.slice(0, state.historyIndex + 1), proxyUrl];
+    const newHistory = [...state.history.slice(0, state.historyIndex + 1), url];
     setState({
-      url: proxyUrl,
-      inputUrl: url, // Keep the original URL in the input
+      url: url,
+      inputUrl: url,
       history: newHistory,
       historyIndex: newHistory.length - 1,
     });
@@ -253,7 +249,7 @@ function InternetExplorer({ onClose, isFocus }) {
             title="Internet Explorer"
             className="ie__content__iframe"
             style={{ width: '100%', height: '100%', border: 'none' }}
-            sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals allow-top-navigation"
+            // sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals allow-top-navigation"
             allow="*; clipboard-write; clipboard-read"
             referrerPolicy="no-referrer"
           />
