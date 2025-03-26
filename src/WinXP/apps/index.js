@@ -149,7 +149,7 @@ export const defaultIconState = [
     component: InternetExplorer,
     isFocus: false,
     injectProps: {
-      defaultUrl: './assets/portfolio/temp.pdf'
+      defaultUrl: 'https://myedenfocus.rf.gd/subhajit-resume.pdf'
     }
   },
   {
