@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { WindowDropDowns } from 'components';
+import { resumeIcon, linkedinIcon } from 'components/Portfolio';
 import dropDownData from './dropDownData';
 import go from 'assets/windowsIcons/290.png';
 import search from 'assets/windowsIcons/299(32x32).png';
@@ -220,45 +221,14 @@ function MyComputer({ onClose }) {
               </div>
               <div className="com__content__left__card__content">
                 <div className="com__content__left__card__row">
-                  <iframe
-                    title="ghbtn"
-                    style={{ margin: '0 0 3px -1px', height: '30px' }}
-                    src="https://ghbtns.com/github-btn.html?user=ShizukuIchi&repo=winXP&type=star&count=true&size=large"
-                    frameBorder="0"
-                    scrolling="0"
-                    width="170px"
-                    height="20px"
-                  />
-                </div>
-                <div className="com__content__left__card__row">
                   <img
                     className="com__content__left__card__img"
-                    src="https://cdn.iconscout.com/icon/free/png-256/medium-1425876-1205067.png"
+                    src={control}
                     alt="control"
                   />
-                  <a
-                    href="https://medium.com/@ShizukuIchi"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="com__content__left__card__text link"
-                  >
-                    Medium
-                  </a>
-                </div>
-                <div className="com__content__left__card__row">
-                  <img
-                    className="com__content__left__card__img"
-                    src={mine}
-                    alt="control"
-                  />
-                  <a
-                    href="https://github.com/ShizukuIchi/minesweeper"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="com__content__left__card__text link"
-                  >
-                    Minesweeper
-                  </a>
+                  <div className="com__content__left__card__text link">
+                    System Details
+                  </div>
                 </div>
               </div>
             </div>
@@ -335,35 +305,35 @@ function MyComputer({ onClose }) {
             </div>
             <div className="com__content__right__card com__content__right__card--me">
               <div className="com__content__right__card__header">
-                About Me :)
+                Profiles
               </div>
               <div className="com__content__right__card__content">
                 <a
-                  href="https://github.com/ShizukuIchi"
+                  href="https://github.com/sbhjt-gr"
                   target="_blank"
                   rel="noreferrer"
                   className="com__content__right__card__item--me"
                 >
                   <img
-                    className="com__content__right__card__img"
+                    className="com__content__right__card__img about-me-icon"
                     src={logo}
                     alt="control"
                   />
                   <div className="com__content__right__card__text">Github</div>
                 </a>
                 <a
-                  href="https://sh1zuku.csie.io"
+                  href="https://www.linkedin.com/in/sbhjt-gr/"
                   target="_blank"
                   rel="noreferrer"
                   className="com__content__right__card__item--me"
                 >
                   <img
-                    className="com__content__right__card__img"
-                    src="https://a.ppy.sh/2926513_1448497605.png"
-                    alt="control"
+                    className="com__content__right__card__img about-me-icon"
+                    src={linkedinIcon}
+                    alt="linkedin"
                   />
                   <div className="com__content__right__card__text">
-                    My Website
+                    LinkedIn
                   </div>
                 </a>
               </div>
@@ -713,6 +683,10 @@ const Div = styled.div`
     width: 45px;
     height: 45px;
     margin-right: 5px;
+    &.about-me-icon {
+      width: 32px;
+      height: 32px;
+    }
   }
   .com__content__right__card__text {
     white-space: nowrap;
