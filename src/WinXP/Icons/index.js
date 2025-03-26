@@ -158,12 +158,25 @@ const StyledIcon = styled(Icon)`
     height: 30px;
     filter: ${({ isFocus, displayFocus }) =>
       isFocus && displayFocus ? 'drop-shadow(0 0 blue)' : ''};
+    ${({ title }) =>
+      title === 'Google Play' &&
+      `
+      width: 40px;
+      height: 30px;
+    `}
   }
   &__img {
     width: 30px;
     height: 30px;
     opacity: ${({ isFocus, displayFocus }) =>
       isFocus && displayFocus ? 0.5 : 1};
+    ${({ title }) =>
+      title === 'Google Play' &&
+      `
+      width: 40px;
+      height: 30px;
+      object-fit: contain;
+    `}
   }
 `;
 

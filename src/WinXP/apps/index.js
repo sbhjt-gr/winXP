@@ -19,6 +19,7 @@ import paint from 'assets/windowsIcons/680(16x16).png';
 import recycleBin from 'assets/windowsIcons/recycling_bin.webp';
 import myedenfocus from 'components/Google/myedenfocus.png';
 import ragionare from 'components/Google/ragionare.png';
+import googlePlay from 'components/Google/Google_Play.png';
 import { resumeIcon, aboutIcon, githubIcon, linkedinIcon } from 'components/Portfolio';
 
 const gen = () => {
@@ -96,13 +97,6 @@ export const defaultIconState = [
     isFocus: false,
   },
   {
-    id: 3,
-    icon: mine,
-    title: 'Minesweeper',
-    component: Minesweeper,
-    isFocus: false,
-  },
-  {
     id: 4,
     icon: notepadLarge,
     title: 'Notepad',
@@ -110,17 +104,19 @@ export const defaultIconState = [
     isFocus: false,
   },
   {
-    id: 5,
-    icon: winamp,
-    title: 'Winamp',
-    component: Winamp,
-    isFocus: false,
-  },
-  {
     id: 6,
     icon: paintLarge,
     title: 'Paint',
     component: Paint,
+    isFocus: false,
+  },
+  {
+    id: 13,
+    icon: googlePlay,
+    title: 'Google Play',
+    isExternalLink: true,
+    url: 'https://play.google.com/store/apps/dev?id=5026387568268103858',
+    component: null,
     isFocus: false,
   },
   {
@@ -149,7 +145,7 @@ export const defaultIconState = [
     component: InternetExplorer,
     isFocus: false,
     injectProps: {
-      defaultUrl: '/static/subhajit-resume.pdf'
+      defaultUrl: '/subhajit-resume.pdf'
     }
   },
   {

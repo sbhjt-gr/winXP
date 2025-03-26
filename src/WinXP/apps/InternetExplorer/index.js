@@ -24,9 +24,9 @@ import refreshIcon from 'assets/windowsIcons/refresh.png';
 
 function InternetExplorer({ onClose, isFocus, defaultUrl }) {
   const [state, setState] = useState({
-    url: defaultUrl || 'https://myedenfocus.rf.gd/',
-    inputUrl: defaultUrl || 'https://myedenfocus.rf.gd/',
-    history: [defaultUrl || 'https://myedenfocus.rf.gd/'],
+    url: defaultUrl || 'https://oldgoogle.neocities.org/2009/',
+    inputUrl: defaultUrl || 'https://oldgoogle.neocities.org/2009/',
+    history: [defaultUrl || 'https://oldgoogle.neocities.org/2009/'],
     historyIndex: 0,
     isLoading: true,
     error: null
