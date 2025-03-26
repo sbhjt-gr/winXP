@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { WindowDropDowns } from 'components';
-import { resumeIcon, linkedinIcon } from 'components/Portfolio';
+import { linkedinIcon } from 'components/Portfolio';
 import dropDownData from './dropDownData';
 import go from 'assets/windowsIcons/290.png';
 import search from 'assets/windowsIcons/299(32x32).png';
@@ -24,7 +24,6 @@ import cd from 'assets/windowsIcons/111(48x48).png';
 import dropdown from 'assets/windowsIcons/dropdown.png';
 import pullup from 'assets/windowsIcons/pullup.png';
 import logo from 'assets/github-logo.png';
-import mine from 'assets/minesweeper/mine-icon.png';
 import windows from 'assets/windowsIcons/windows.png';
 
 function MyComputer({ onClose }) {

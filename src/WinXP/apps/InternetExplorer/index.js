@@ -17,7 +17,6 @@ import history from 'assets/windowsIcons/history.png';
 import home from 'assets/windowsIcons/home.png';
 import mail from 'assets/windowsIcons/mail.png';
 import msn from 'assets/windowsIcons/msn.png';
-import refresh from 'assets/windowsIcons/refresh.png';
 import stop from 'assets/windowsIcons/stop.png';
 import windows from 'assets/windowsIcons/windows.png';
 import dropdown from 'assets/windowsIcons/dropdown.png';
