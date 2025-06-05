@@ -177,6 +177,11 @@ const StyledIcon = styled(Icon)`
       height: 30px;
       object-fit: contain;
     `}
+    ${({ title }) =>
+      title === 'Inferra' &&
+      `
+      border-radius: 50%;
+    `}
   }
 `;
 

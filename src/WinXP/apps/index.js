@@ -18,7 +18,7 @@ import paintLarge from 'assets/windowsIcons/680(32x32).png';
 import paint from 'assets/windowsIcons/680(16x16).png';
 import recycleBin from 'assets/windowsIcons/recycling_bin.webp';
 import myedenfocus from 'components/Google/myedenfocus.png';
-import ragionare from 'components/Google/ragionare.png';
+import inferra from 'components/Google/inferra-small.png';
 import googlePlay from 'components/Google/Google_Play.png';
 import { resumeIcon, aboutIcon, githubIcon, linkedinIcon, workIcon } from 'components/Portfolio';
 
@@ -115,7 +115,7 @@ export const defaultIconState = [
   {
     id: 7,
     icon: myedenfocus,
-    title: 'MyedenFocus',
+    title: 'MydenFocus',
     isExternalLink: true,
     url: 'https://myedenfocus.rf.gd/',
     component: null,
@@ -123,8 +123,8 @@ export const defaultIconState = [
   },
   {
     id: 8,
-    icon: ragionare,
-    title: 'Ragionare',
+    icon: inferra,
+    title: 'Inferra',
     isExternalLink: true,
     url: 'https://play.google.com/store/apps/details?id=com.gorai.ragionare',
     component: null,
@@ -155,7 +155,7 @@ export const defaultIconState = [
         "I think differently from others and I try to be more creative. While others are busy in picking the ultra-flashy templates to build their portfolio websites, I decided to extend ShizukuIchi's work on winXP and add extra features & changes to it to make it look more like a portfolio. I have maintained the retro-styles, and also made the Internet Explorer browsable, so that it can browse through my links.\n" +
         "Windows XP was my favourite Windows Operating System in my childhood, this is one of the reasons of using of a such themed portfolio.\n\n\n" +
 	      "My work on mobile development:\n\n" + 
-        "I'm really into building mobile apps, and I love working with React Native and in Kotlin with Jetpack Compose. You can find my work - I developed Ragionare and MyedenFocus, which are out there on Google Play. I develop top-class apps and I've gotten pretty good at using most of the tools that React Native & Android Studio offer."
+        "I'm really into building mobile apps, and I love working with React Native and in Kotlin with Jetpack Compose. You can find my work - I developed Inferra and MyedenFocus, which are out there on Google Play. I develop top-class apps and I've gotten pretty good at using most of the tools that React Native & Android Studio offer."
     }
   },
   {
