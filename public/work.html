@@ -145,52 +145,111 @@
         <div class="section">
             <div class="project">
                 <h3>Inferra</h3>
-                <p>Your personal AI chat companion that runs Large Language Models on your device.</p>
-                <p>🤖 Flexible AI Models</p>
+                <p>Inferra is a mobile application that brings large language models (LLMs) and small language models (SLMs) directly to your Android and iOS device. Cloud-based models like Claude, DeepSeek, Gemini, and ChatGPT are also supported.</p>
+                
+                <p>Core Features:</p>
                 <ul>
-                    <li>Download and manage various AI models</li>
-                    <li>Choose models that fit your needs</li>
-                    <li>Easy model installation and removal</li>
+                    <li>Local inference through llama.cpp with support for GGUF models</li>
+                    <li>Seamless integration with cloud-based models (OpenAI, Gemini, Anthropic, DeepSeek)</li>
+                    <li>Vision support through multimodal models with projector files</li>
+                    <li>Built-in camera for capturing and sending images to models</li>
+                    <li>RAG (Retrieval-Augmented Generation) support for document understanding</li>
+                    <li>File attachment support with built-in document extractor and OCR</li>
                 </ul>
-                <p>💡 Key Features:</p>
+                
+                <p>Model Management:</p>
                 <ul>
-                    <li>Private, offline-first conversations</li>
-                    <li>Real-time chat with AI</li>
-                    <li>Beautiful dark and light themes</li>
-                    <li>Memory-optimized for smooth performance</li>
-                    <li>Rich text support with Markdown</li>
-                    <li>Simple and intuitive interface</li>
+                    <li>Download models directly from HuggingFace</li>
+                    <li>Cherry-picked model list optimized for edge devices</li>
+                    <li>Import models from local storage or custom URLs</li>
+                    <li>Built-in HTTP server with REST APIs for network access</li>
                 </ul>
-                <p>🛠️ Technical Features:</p>
+                
+                <p>Chat Experience:</p>
                 <ul>
-                    <li>Local model management</li>
-                    <li>Efficient resource usage</li>
-                    <li>Background model downloads</li>
-                    <li>Custom model support</li>
+                    <li>Messages support editing, regeneration, and markdown rendering</li>
+                    <li>Code blocks with clipboard copying functionality</li>
+                    <li>Chat history management and organization</li>
+                    <li>Real-time streaming responses for local and remote models</li>
                 </ul>
-                <p>Perfect for:</p>
+                
+                <p>Technologies Used:</p>
                 <ul>
-                    <li>Privacy-conscious users</li>
-                    <li>Offline AI enthusiasts</li>
-                    <li>Personal AI assistance</li>
-                    <li>Learning and exploration</li>
-                    <li>Secure conversations</li>
+                    <li>React Native with Expo</li>
+                    <li>TypeScript</li>
+                    <li>Firebase (authentication, Firestore)</li>
+                    <li>llama.cpp for local inference</li>
+                    <li>React Native ML Kit for OCR</li>
+                    <li>WebRTC for peer-to-peer connections</li>
                 </ul>
-                <p><small>Note: Model sizes vary and require sufficient storage space on your device. Performance depends on your device capabilities.</small></p>
-                <a href="https://play.google.com/store/apps/details?id=com.gorai.ragionare" target="_blank">View on Google Play</a>
+                
+                <a href="https://play.google.com/store/apps/details?id=com.gorai.ragionare" target="_blank">View on Google Play</a> | 
+                <a href="https://apps.apple.com/app/inferra-local-ai-chat/id6736842393" target="_blank">View on App Store</a> | 
+                <a href="https://github.com/sbhjt-gr/inferra" target="_blank">View on GitHub</a>
+            </div>
+
+            <div class="project">
+                <h3>WiLang</h3>
+                <p>WiLang is a comprehensive video calling application built with Expo and React Native that delivers professional-grade communication features across iOS, Android, and web platforms.</p>
+                
+                <p>Key Features:</p>
+                <ul>
+                    <li>Firebase Authentication with email/password and Google Sign-In</li>
+                    <li>WebRTC-powered peer-to-peer video calls</li>
+                    <li>Meeting rooms with unique IDs for group participation</li>
+                    <li>One-to-one calls directly from contacts</li>
+                    <li>Audio/video controls (mute, camera switch, end call)</li>
+                    <li>Real-time connection status and participant management</li>
+                </ul>
+                
+                <p>Technical Implementation:</p>
+                <ul>
+                    <li>React Native with Expo SDK 53</li>
+                    <li>TypeScript for type safety</li>
+                    <li>React Navigation 7 with native stack and tab navigators</li>
+                    <li>React Native Elements (RNEUI) for UI</li>
+                    <li>WebRTC with Socket.IO signaling</li>
+                    <li>Firebase Auth and Firestore</li>
+                </ul>
+                
+                <p>App Structure:</p>
+                <ul>
+                    <li>Calls Tab - Create instant meetings, join existing meetings</li>
+                    <li>Contacts Tab - Access device contacts, initiate video calls</li>
+                    <li>History Tab - View call history and past meetings</li>
+                    <li>Settings Tab - User preferences and account management</li>
+                </ul>
+                
+                <a href="https://github.com/sbhjt-gr/WiLang" target="_blank">View on GitHub</a>
             </div>
 
             <div class="project">
                 <h3>MydenFocus</h3>
-                <p>A focus timer app that helps users maintain concentration and productivity.</p>
+                <p>MydenFocus is a productivity Android app designed to enhance academic performance through focused study sessions, meditation, and task management. Built with modern Android development practices using Jetpack Compose.</p>
+                
                 <p>Features:</p>
                 <ul>
-                    <li>Pomodoro timer</li>
-                    <li>Customizable work/break intervals</li>
-                    <li>Statistics tracking</li>
-                    <li>Minimalist design</li>
+                    <li>Study Session Timer - Track study sessions with customizable timer</li>
+                    <li>Meditation Timer - Built-in meditation timer with background music options</li>
+                    <li>Task Management - Schedule and track academic tasks with notifications</li>
+                    <li>Subject Management - Organize study sessions by subjects</li>
+                    <li>Progress Tracking - Monitor study hours and meditation sessions</li>
                 </ul>
-                <a href="https://myedenfocus.rf.gd/" target="_blank">Visit Website</a>
+                
+                <p>Tech Stack:</p>
+                <ul>
+                    <li>UI: Jetpack Compose with Material 3</li>
+                    <li>Architecture: MVVM with Clean Architecture</li>
+                    <li>Dependency Injection: Hilt</li>
+                    <li>Navigation: Compose Destinations</li>
+                    <li>Background Processing: Kotlin Coroutines</li>
+                    <li>Local Storage: Room Database</li>
+                    <li>Services: Foreground Services for timers</li>
+                </ul>
+                
+                <a href="https://play.google.com/store/apps/details?id=com.gorai.myedenfocus" target="_blank">View on Google Play</a> | 
+                <a href="https://myedenfocus.rf.gd/" target="_blank">Visit Website</a> | 
+                <a href="https://github.com/sbhjt-gr/mydenfocus" target="_blank">View on GitHub</a>
             </div>
         </div>
                 <div class="project">

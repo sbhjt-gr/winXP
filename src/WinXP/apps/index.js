@@ -20,7 +20,7 @@ import recycleBin from 'assets/windowsIcons/recycling_bin.webp';
 import myedenfocus from 'components/Google/myedenfocus.png';
 import inferra from 'components/Google/inferra-small.png';
 import googlePlay from 'components/Google/Google_Play.png';
-import { resumeIcon, aboutIcon, githubIcon, linkedinIcon, workIcon } from 'components/Portfolio';
+import { aboutIcon, githubIcon, linkedinIcon, workIcon } from 'components/Portfolio';
 
 const gen = () => {
   let id = -1;
@@ -131,17 +131,6 @@ export const defaultIconState = [
     isFocus: false,
   },
   {
-    id: 9,
-    icon: resumeIcon,
-    title: 'Resume',
-    isExternalLink: true,
-    component: InternetExplorer,
-    isFocus: false,
-    injectProps: {
-      defaultUrl: '/subhajit-resume.pdf'
-    }
-  },
-  {
     id: 10,
     icon: aboutIcon,
     title: 'About Me',
@@ -149,13 +138,13 @@ export const defaultIconState = [
     component: Notepad,
     isFocus: false,
     injectProps: {
-      defaultText: "Hi, I'm Subhajit Gorai, and I'm a 3rd year student at Heritage Institute of Technology.\n\n\n" +
+      defaultText: "Hi, I'm Subhajit Gorai, and I'm a 4th year student at Heritage Institute of Technology.\n\n\n" +
         "I have been passionate about tech since my childhood. I started building websites with PHP as back-end since the late 2016 and used free domains from Freenom.com paired with Cloudflare CDN to host them on shared hosting sites. Although, I have moved on to different tech stacks now, the experience that I've brought from the past by building stuff, remains consistent.\n\n\n" +
+	      "My work on mobile development:\n\n" + 
+        "I'm really into building mobile apps, and I love working with React Native and in Kotlin. You can find my work - I developed Inferra, MyedenFocus & WiLang, which are out there on Google Play & App Store. I develop top-class apps and I've gotten pretty good at using most of the tools that React Native & Android Studio offer." + "\n\n\n" +
         "Why Windows XP themed portfolio?\n\n" +
         "I think differently from others and I try to be more creative. While others are busy in picking the ultra-flashy templates to build their portfolio websites, I decided to extend ShizukuIchi's work on winXP and add extra features & changes to it to make it look more like a portfolio. I have maintained the retro-styles, and also made the Internet Explorer browsable, so that it can browse through my links.\n" +
-        "Windows XP was my favourite Windows Operating System in my childhood, this is one of the reasons of using of a such themed portfolio.\n\n\n" +
-	      "My work on mobile development:\n\n" + 
-        "I'm really into building mobile apps, and I love working with React Native and in Kotlin with Jetpack Compose. You can find my work - I developed Inferra and MyedenFocus, which are out there on Google Play. I develop top-class apps and I've gotten pretty good at using most of the tools that React Native & Android Studio offer."
+        "Windows XP was also my favourite Windows Operating System in my childhood, this is another reason I used such a themed portfolio."
     }
   },
   {
